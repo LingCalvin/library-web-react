@@ -10,35 +10,31 @@ import {
 import { Alert } from '@material-ui/lab';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoginForm, { LoginFormErrors } from './login-form';
+import PasswordResetRequestForm from './password-reset-request-form';
 
-interface LoginCardProps {
+interface PasswordResetRequestCardProps {
   email: string;
-  password: string;
-  errors?: LoginFormErrors;
+  error?: string;
   errorMessage?: string;
   loading?: boolean;
   onEmailChange: (email: string) => void;
-  onPasswordChange: (password: string) => void;
   onSubmit: () => void;
 }
 
-export default function LoginCard({
+export default function PasswordResetRequestCard({
   email,
-  password,
-  errors,
+  error,
   errorMessage,
   loading,
   onEmailChange,
-  onPasswordChange,
   onSubmit,
-}: LoginCardProps) {
+}: PasswordResetRequestCardProps) {
   return (
     <Card>
       <CardContent>
         <Grid container spacing={2} direction="column">
           <Grid item xs>
-            <Typography variant="h5">Sign in</Typography>
+            <Typography variant="h5">Forgot your password?</Typography>
           </Grid>
           {errorMessage && (
             <Grid item xs>
@@ -46,21 +42,25 @@ export default function LoginCard({
             </Grid>
           )}
           <Grid item xs>
-            <LoginForm
+            <Typography variant="body2">
+              Enter your email below and we will send you a link with
+              instructions on resetting your password.
+            </Typography>
+          </Grid>
+          <Grid item xs>
+            <PasswordResetRequestForm
               email={email}
-              password={password}
-              errors={errors}
+              error={error}
               onEmailChange={onEmailChange}
-              onPasswordChange={onPasswordChange}
               onSubmit={onSubmit}
             />
           </Grid>
           <Grid item xs>
             <ButtonGroup variant="text" color="primary" size="small">
-              <Button type="button">Register</Button>
-              <Button type="button" component={Link} to="/forgot-password">
-                Recover account
+              <Button type="button" component={Link} to="/login">
+                Log in
               </Button>
+              <Button type="button">Register</Button>
             </ButtonGroup>
           </Grid>
         </Grid>
