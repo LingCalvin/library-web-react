@@ -20,7 +20,7 @@ interface FormCardProps {
   /**
    * The form. This component gets placed between the heading and footer.
    */
-  form: React.ReactNode;
+  form?: React.ReactNode;
   /**
    * The footer.
    */
@@ -60,9 +60,11 @@ export default function FormCard({
               <Typography variant="body2">{message}</Typography>
             </Grid>
           )}
-          <Grid item xs>
-            {form}
-          </Grid>
+          {form && (
+            <Grid item xs>
+              {form}
+            </Grid>
+          )}
           {footer && (
             <Grid item xs>
               {footer}

@@ -7,6 +7,10 @@ class AccountsService {
   requestPasswordReset(email: string) {
     return this.http.post('/accounts/password-reset-tokens', { email });
   }
+
+  resetPassword(token: string, password: string) {
+    return this.http.post('/accounts/password-resets', { token, password });
+  }
 }
 
 const accountsService = new AccountsService(ApiClient);
