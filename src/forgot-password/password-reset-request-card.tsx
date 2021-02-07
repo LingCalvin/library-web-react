@@ -1,15 +1,7 @@
-import {
-  ButtonGroup,
-  Card,
-  CardContent,
-  Grid,
-  Button,
-  Typography,
-  LinearProgress,
-} from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { ButtonGroup, Button } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FormCard from '../common/components/form-card';
 import PasswordResetRequestForm from './password-reset-request-form';
 
 interface PasswordResetRequestCardProps {
@@ -30,42 +22,27 @@ export default function PasswordResetRequestCard({
   onSubmit,
 }: PasswordResetRequestCardProps) {
   return (
-    <Card>
-      <CardContent>
-        <Grid container spacing={2} direction="column">
-          <Grid item xs>
-            <Typography variant="h5">Forgot your password?</Typography>
-          </Grid>
-          {errorMessage && (
-            <Grid item xs>
-              <Alert severity="error">{errorMessage}</Alert>
-            </Grid>
-          )}
-          <Grid item xs>
-            <Typography variant="body2">
-              Enter your email below and we will send you a link with
-              instructions on resetting your password.
-            </Typography>
-          </Grid>
-          <Grid item xs>
-            <PasswordResetRequestForm
-              email={email}
-              error={error}
-              onEmailChange={onEmailChange}
-              onSubmit={onSubmit}
-            />
-          </Grid>
-          <Grid item xs>
-            <ButtonGroup variant="text" color="primary" size="small">
-              <Button type="button" component={Link} to="/login">
-                Log in
-              </Button>
-              <Button type="button">Register</Button>
-            </ButtonGroup>
-          </Grid>
-        </Grid>
-      </CardContent>
-      {loading && <LinearProgress />}
-    </Card>
+    <FormCard
+      heading="Forgot your password?"
+      message="Enter your email below and we will send you a link with instructions on resetting your password."
+      form={
+        <PasswordResetRequestForm
+          email={email}
+          error={error}
+          onEmailChange={onEmailChange}
+          onSubmit={onSubmit}
+        />
+      }
+      footer={
+        <ButtonGroup variant="text" color="primary" size="small">
+          <Button type="button" component={Link} to="/login">
+            Log in
+          </Button>
+          <Button type="button">Register</Button>
+        </ButtonGroup>
+      }
+      errorMessage={errorMessage}
+      loading={loading}
+    />
   );
 }
