@@ -5,6 +5,7 @@ import Login from './login';
 import ForgotPassword from './forgot-password';
 import ResetPassword from './reset-password';
 import Home from './home';
+import NotFound from './not-found';
 
 export default function App() {
   return (
@@ -21,6 +22,9 @@ export default function App() {
         </Route>
         <Route path="/reset-password/:token">
           <ResetPassword />
+        </Route>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
     </Router>
