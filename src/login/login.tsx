@@ -4,6 +4,8 @@ import LoginCard from './login-card';
 import validator from 'validator';
 import { LoginFormErrors } from './login-form';
 import authService from '../common/services/auth.service';
+import useSearchParam from '../common/hooks/useSearchParam';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -18,6 +20,8 @@ const emailErrorMessage = 'Invalid email';
 const passwordErrorMessage = 'This field is required';
 
 export default function Login() {
+  const history = useHistory();
+  const nextPage = useSearchParam('continue');
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -62,6 +66,11 @@ export default function Login() {
     try {
       setLoading(true);
       await authService.login(email, password);
+      if (nextPage) {
+        history.replace(nextPage);
+      } else {
+        history.replace('/');
+      }
     } catch (e) {
       if (e.response?.status === 401) {
         setErrorMessage('Invalid credentials');
