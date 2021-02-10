@@ -61,6 +61,8 @@ export default function ResetPassword() {
     setErrors((state) => ({
       ...state,
       password: !validator.isEmpty(password) ? undefined : passwordErrorMessage,
+      confirmPassword:
+        confirmPassword === password ? undefined : confirmPasswordErrorMessage,
     }));
   }
 
