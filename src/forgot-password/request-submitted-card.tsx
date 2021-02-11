@@ -1,10 +1,9 @@
 import {
-  ButtonGroup,
   Card,
   CardContent,
   Grid,
-  Button,
   Typography,
+  Link as MaterialLink,
 } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -24,12 +23,9 @@ export default function RequestSubmitted() {
             </Typography>
           </Grid>
           <Grid item xs>
-            <ButtonGroup variant="text" color="primary" size="small">
-              <Button type="button" component={Link} to="/login">
-                Log in
-              </Button>
-              <Button type="button">Register</Button>
-            </ButtonGroup>
+            <MaterialLink type="button" component={Link} to="/login">
+              Log in
+            </MaterialLink>
           </Grid>
         </Grid>
       </CardContent>
