@@ -11,6 +11,10 @@ class AccountsService {
   resetPassword(token: string, password: string) {
     return this.http.post('/accounts/password-resets', { token, password });
   }
+
+  verifyEmail(token: string) {
+    return this.http.post('/accounts/verified-accounts', { token });
+  }
 }
 
 const accountsService = new AccountsService(ApiClient);

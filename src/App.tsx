@@ -7,6 +7,7 @@ import ResetPassword from './reset-password/reset-password';
 import Home from './home/home';
 import NotFound from './not-found/not-found';
 import Registration from './registration/registration';
+import VerifyEmail from './verify-email/verify-email';
 
 export default function App() {
   return (
@@ -26,6 +27,9 @@ export default function App() {
         </Route>
         <Route path="/register">
           <Registration />
+        </Route>
+        <Route path="/verify-email/:token">
+          <VerifyEmail />
         </Route>
         <Route path="*">
           <NotFound />
