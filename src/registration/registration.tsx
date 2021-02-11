@@ -33,9 +33,7 @@ export default function Registration() {
   const [firstNameError, setFirstNameError] = useState(requiredFieldError);
   const [lastNameError, setLastNameError] = useState(requiredFieldError);
   const [emailError, setEmailError] = useState(invalidEmailError);
-  const [phoneNumberError, setPhoneNumberError] = useState(
-    invalidPhoneNumberError,
-  );
+  const [phoneNumberError, setPhoneNumberError] = useState('');
   const [passwordError, setPasswordError] = useState(requiredFieldError);
   const [repeatPasswordError, setRepeatPasswordError] = useState('');
 
