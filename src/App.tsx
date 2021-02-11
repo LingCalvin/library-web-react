@@ -6,6 +6,7 @@ import ForgotPassword from './forgot-password/forgot-password';
 import ResetPassword from './reset-password/reset-password';
 import Home from './home/home';
 import NotFound from './not-found/not-found';
+import Registration from './registration/registration';
 
 export default function App() {
   return (
@@ -22,6 +23,9 @@ export default function App() {
         </Route>
         <Route path="/reset-password/:token">
           <ResetPassword />
+        </Route>
+        <Route path="/register">
+          <Registration />
         </Route>
         <Route path="*">
           <NotFound />
