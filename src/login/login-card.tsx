@@ -1,4 +1,4 @@
-import { ButtonGroup, Button } from '@material-ui/core';
+import { Link as MaterialLink, Box, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FormCard from '../common/components/form-card';
@@ -15,6 +15,10 @@ interface LoginCardProps {
   onSubmit: () => void;
 }
 
+const useStyles = makeStyles(() => ({
+  linkBox: { display: 'flex', justifyContent: 'space-between' },
+}));
+
 export default function LoginCard({
   email,
   password,
@@ -25,6 +29,7 @@ export default function LoginCard({
   onPasswordChange,
   onSubmit,
 }: LoginCardProps) {
+  const classes = useStyles();
   return (
     <FormCard
       heading="Sign in"
@@ -39,12 +44,14 @@ export default function LoginCard({
         />
       }
       footer={
-        <ButtonGroup variant="text" color="primary" size="small">
-          <Button type="button">Register</Button>
-          <Button type="button" component={Link} to="/forgot-password">
+        <Box className={classes.linkBox}>
+          <MaterialLink component={Link} to="/forgot-password">
             Recover account
-          </Button>
-        </ButtonGroup>
+          </MaterialLink>
+          <MaterialLink component={Link} to="/register">
+            Register
+          </MaterialLink>
+        </Box>
       }
       errorMessage={errorMessage}
       loading={loading}

@@ -1,4 +1,4 @@
-import { ButtonGroup, Button } from '@material-ui/core';
+import { makeStyles, Link as MaterialLink, Box } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FormCard from '../common/components/form-card';
@@ -13,6 +13,10 @@ interface PasswordResetRequestCardProps {
   onSubmit: () => void;
 }
 
+const useStyles = makeStyles(() => ({
+  linkBox: { display: 'flex', justifyContent: 'space-between' },
+}));
+
 export default function PasswordResetRequestCard({
   email,
   error,
@@ -21,6 +25,7 @@ export default function PasswordResetRequestCard({
   onEmailChange,
   onSubmit,
 }: PasswordResetRequestCardProps) {
+  const classes = useStyles();
   return (
     <FormCard
       heading="Forgot your password?"
@@ -34,12 +39,14 @@ export default function PasswordResetRequestCard({
         />
       }
       footer={
-        <ButtonGroup variant="text" color="primary" size="small">
-          <Button type="button" component={Link} to="/login">
+        <Box className={classes.linkBox}>
+          <MaterialLink component={Link} to="/login">
             Log in
-          </Button>
-          <Button type="button">Register</Button>
-        </ButtonGroup>
+          </MaterialLink>
+          <MaterialLink component={Link} to="/register">
+            Register
+          </MaterialLink>
+        </Box>
       }
       errorMessage={errorMessage}
       loading={loading}
