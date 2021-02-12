@@ -8,6 +8,8 @@ import Home from './home/home';
 import NotFound from './not-found/not-found';
 import Registration from './registration/registration';
 import VerifyEmail from './verify-email/verify-email';
+import Collection from './collection/collection';
+import Events from './events/events';
 
 export default function App() {
   return (
@@ -15,6 +17,12 @@ export default function App() {
       <Switch>
         <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/collection">
+          <Collection />
+        </Route>
+        <Route path="/events">
+          <Events />
         </Route>
         <Route path="/login">
           <Login />

@@ -1,13 +1,14 @@
-import { Box, Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PublicContainer from '../public-container/public-container';
 
 export default function Home() {
   return (
-    <Box>
-      <Button component={Link} to="/login">
-        Log in
-      </Button>
-    </Box>
+    <PublicContainer>
+      <Typography>
+        Welcome to the library! You can view our collection, put books on hold,
+        or see our upcoming events.
+      </Typography>
+    </PublicContainer>
   );
 }
